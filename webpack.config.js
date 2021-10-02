@@ -1,4 +1,5 @@
 // const webpack = require( "webpack" );
+const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 
 const config = {
     "name": "vue-app",
@@ -7,12 +8,6 @@ const config = {
     "context": process.cwd(),
     "devtool": "eval-source-map",
     "experiments": { "topLevelAwait": true },
-    "cache": {
-        "type": "filesystem",
-        "compression": "brotli",
-        "maxAge": 1000 * 60 * 60 * 24 * 3, // 3 days
-        "maxMemoryGenerations": 1,
-    },
 
     "entry": {
         "app": "./src/main.js",
@@ -108,7 +103,14 @@ const config = {
         ],
     },
 
-    "plugins": [],
+    "plugins": [
+        new BundleAnalyzerPlugin( {
+            "analyzerMode": "server",
+            "openAnalyzer": false,
+
+            // "logLevel": "silent",
+        } ),
+    ],
 };
 
 module.exports = config;
