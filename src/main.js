@@ -1,3 +1,3 @@
-import "./logo.ong";
+import "./logo.png";
 
 console.log( "DONE" );
