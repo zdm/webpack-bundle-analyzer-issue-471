@@ -1,11 +1,12 @@
 // const webpack = require( "webpack" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
+const path = require( "path" );
 
 const config = {
     "name": "vue-app",
     "target": "web", // browserslist
     "mode": "development",
-    "context": process.cwd(),
+    "context": path.resolve( __dirname ),
     "devtool": "eval-source-map",
     "experiments": { "topLevelAwait": true },
 
@@ -14,7 +15,7 @@ const config = {
     },
 
     "output": {
-        "path": process.cwd() + "/www",
+        "path": path.resolve( __dirname, "/www" ),
         "publicPath": "auto",
         "filename": "js/[name].[contenthash].js",
         "chunkFilename": "js/[name].[contenthash].js",
