@@ -7,7 +7,7 @@
         "@babel/core": "^7.15.5",
         "@babel/preset-env": "^7.15.6",
         "@vue/babel-preset-app": "^5.0.0",
-        "babel-loader": "^8.2.2",
+        "babel-loader": "^9.0.0",
         "webpack": "^5.56.0",
         "webpack-bundle-analyzer": "^4.4.2",
         "webpack-cli": "^4.8.0",
