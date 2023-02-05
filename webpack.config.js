@@ -15,7 +15,7 @@ const config = {
     },
 
     "output": {
-        "path": path.resolve( __dirname, "/www" ),
+        "path": path.resolve( __dirname, "www" ),
         "publicPath": "auto",
         "filename": "js/[name].[contenthash].js",
         "chunkFilename": "js/[name].[contenthash].js",
