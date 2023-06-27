@@ -1,9 +1,9 @@
 # common
-/data/
-/wiki/
+/data
+/wiki
 /env.local.yaml
 /env.*.local.yaml
 
 # node
-/node_modules/
-/www/
+/node_modules
+/www
