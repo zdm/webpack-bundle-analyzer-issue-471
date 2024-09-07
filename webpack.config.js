@@ -23,7 +23,7 @@ const config = {
     },
 
     "resolve": {
-        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
+        "extensions": [ ".mjs", ".js", ".jsx", ".vue", ".json", ".wasm" ],
     },
 
     "optimization": {
@@ -67,8 +67,8 @@ const config = {
                         "options": {
                             "compact": false, // we don't need babel compact, because js files optimized using terser later
                             "presets": [
-                                ["@babel/preset-env", { "shippedProposals": true }],
-                                ["@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true }],
+                                [ "@babel/preset-env", { "shippedProposals": true } ],
+                                [ "@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true } ],
                             ],
                         },
                     },
