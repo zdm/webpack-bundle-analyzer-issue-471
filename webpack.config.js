@@ -1,6 +1,6 @@
 // const webpack = require( "webpack" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
-const path = require( "path" );
+const path = require( "node:path" );
 
 const config = {
     "name": "vue-app",
@@ -31,7 +31,7 @@ const config = {
             "cacheGroups": {
                 "vendors": {
                     "name": "vendors",
-                    "test": /[\\/]node_modules[\\/]/,
+                    "test": /[/\\]node_modules[/\\]/,
                     "priority": -10,
                     "chunks": "initial",
                 },
