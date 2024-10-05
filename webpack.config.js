@@ -1,6 +1,6 @@
 // const webpack = require( "webpack" );
-const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const path = require( "node:path" );
+const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 
 const config = {
     "name": "vue-app",
