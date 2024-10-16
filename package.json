@@ -12,7 +12,7 @@
     "license": "Proprietary Software",
     "author": "root <root@softvisio.net>",
     "scripts": {
-        "dev": "npx webpack-dev-server"
+        "start": "npx webpack-dev-server"
     },
     "dependencies": {
         "@babel/core": "^7.15.5",
