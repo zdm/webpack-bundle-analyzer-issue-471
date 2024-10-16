@@ -4,7 +4,7 @@
 
 ```shell
 npm i
-npx webpack-dev-server
+npm start
 ```
 
 Errors:
