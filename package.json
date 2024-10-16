@@ -1,4 +1,5 @@
 {
+    "name": "@zdm/webpack-bundle-analyzer-issue-471",
     "private": true,
     "homepage": "https://github.com/zdm/webpack-bundle-analyzer-issue-471",
     "bugs": {
