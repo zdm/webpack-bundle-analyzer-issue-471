@@ -2,7 +2,7 @@
 
 ### How to run
 
-```shell
+```sh
 npm install
 
 npm start
