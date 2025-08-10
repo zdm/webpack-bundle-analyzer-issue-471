@@ -1,15 +1,31 @@
-// const webpack = require( "webpack" );
-const path = require( "node:path" );
-const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
+import path from "node:path";
+import { createConfig } from "@softvisio/babel";
+import HtmlPlugin from "html-webpack-plugin";
+import { VueLoaderPlugin } from "vue-loader";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+
+// import webpack from "webpack";
 
 const config = {
     "name": "app",
     "target": "web", // browserslist
     "mode": "development",
-    "context": path.resolve( __dirname ),
+    "context": path.resolve( import.meta.dirname ),
     "devtool": "eval-source-map",
     "experiments": {
+        "asyncWebAssembly": true,
+        "layers": true,
         "topLevelAwait": true,
+    },
+
+    "devServer": {
+        "host": "0.0.0.0",
+        "port": 80,
+        "client": {
+            "overlay": {
+                "runtimeErrors": true,
+            },
+        },
     },
 
     "entry": {
@@ -17,11 +33,14 @@ const config = {
     },
 
     "output": {
-        "path": path.resolve( __dirname, "www" ),
+        "path": path.resolve( import.meta.dirname, "www" ),
         "publicPath": "auto",
         "filename": "js/[name].[contenthash].js",
         "chunkFilename": "js/[name].[contenthash].js",
         "hashDigestLength": 8,
+        "environment": {
+            "asyncFunction": true,
+        },
     },
 
     "resolve": {
@@ -53,14 +72,46 @@ const config = {
 
             // js
             {
-                "test": /\.m?jsx?$/,
-                "exclude": [],
+                "test": /\.[cm]?jsx?$/,
+                "resolve": {
+                    "fullySpecified": false,
+                },
+                "oneOf": [
+
+                    // web workers *.worker.js
+                    {
+                        "test": /\.worker\.[cm]?js$/,
+
+                        "type": "asset/resource",
+                        "generator": {
+                            "filename": "[name].[hash][ext][query]",
+                        },
+                    },
+
+                    // other *.js files
+                    {
+                        "use": [
+                            {
+                                "loader": "babel-loader",
+                                "options": createConfig(),
+                            },
+                        ],
+                    },
+                ],
+            },
+
+            // vue
+            {
+                "test": /\.vue$/,
                 "use": [
                     {
-                        "loader": "babel-loader",
+                        "loader": "vue-loader",
                         "options": {
-                            "compact": false,
-                            "presets": [ [ "@babel/preset-env", { "shippedProposals": true } ] ],
+
+                            // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
+                            "compilerOptions": {
+                                "isCustomElement": tag => tag.startsWith( "ext-" ),
+                            },
                         },
                     },
                 ],
@@ -69,13 +120,21 @@ const config = {
     },
 
     "plugins": [
+        new VueLoaderPlugin(),
+
         new BundleAnalyzerPlugin( {
             "analyzerMode": "server",
             "openAnalyzer": false,
 
             // "logLevel": "silent",
         } ),
+
+        new HtmlPlugin( {
+            "scriptLoading": "defer",
+            "template": "public/index.html",
+            "templateParameters": {},
+        } ),
     ],
 };
 
-module.exports = config;
+export default config;
