@@ -1,5 +1,5 @@
 import path from "node:path";
-import { createConfig } from "@softvisio/babel";
+import { createConfig } from "@c0rejs/babel";
 import HtmlPlugin from "html-webpack-plugin";
 import { VueLoaderPlugin } from "vue-loader";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
