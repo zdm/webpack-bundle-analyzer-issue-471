@@ -1,5 +1,5 @@
 {
-    "name": "@zdm/webpack-bundle-analyzer-issue-471",
+    "name": "@softvisio/webpack-bundle-analyzer-issue-471",
     "private": true,
     "description": "Webpack bundle analyzer issue #471",
     "homepage": "https://github.com/softvisio/webpack-bundle-analyzer-issue-471",
