@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "@babel/preset-env": "^7.15.6",
-        "@c0rejs/babel": "^1.4.25",
+        "@corejslib/babel": "^1.4.25",
         "babel-loader": "^10.0.0",
         "html-webpack-plugin": "^5.6.3",
         "vue": "^3.4.30",
